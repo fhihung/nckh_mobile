@@ -58,7 +58,8 @@ class BodyState extends State<Body> {
                 Expanded(
                   flex: 1,
                   child: NgayCaNhan(
-                    detailText: NCNNumber(),
+                    detailText: 'a',
+                    // NCNNumber(),
                     text: 'Ngày cá nhân',
                     numberText: LoginBodyState.data!.ngayCaNhan,
                   ),
@@ -66,7 +67,8 @@ class BodyState extends State<Body> {
                 Expanded(
                   flex: 1,
                   child: NgayCaNhan(
-                    detailText: 'Non',
+                    detailText: 'a',
+                    // TCNNumber(),
                     text: 'Tháng cá nhân',
                     numberText: LoginBodyState.data!.thangCaNhan,
                   ),
@@ -74,7 +76,8 @@ class BodyState extends State<Body> {
                 Expanded(
                   flex: 1,
                   child: NgayCaNhan(
-                    detailText: 'Dở',
+                    detailText: 'a',
+                    // NamCNNumber(),
                     text: 'Năm cá nhân',
                     numberText: LoginBodyState.data!.namCaNhan,
                   ),

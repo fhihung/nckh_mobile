@@ -23,27 +23,58 @@ class HomePageScreen extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       drawer: Drawer(
         child: SafeArea(
-          child: Column(children: [
-            ListTile(
-              title: Text('${user!.name}'),
-              subtitle: Text('${user!.day}/${user!.month}/${user!.year}'),
-            ),
-            Container(
-              child: OutlinedButton(
-                child: Text('Exit'),
-                onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      type: PageTransitionType.fade,
-                      child: WelcomeScreen(),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 18),
+                  child: Card(
+                    child: ListTile(
+                      leading: Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                      title: Text(
+                        '${user!.name}',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      subtitle: Text(
+                        '${user!.day}/${user!.month}/${user!.year}',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
-                  );
-                },
-              ),
-            ),
-          ]),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  child: ElevatedButton(
+                    child: Text('Exit'),
+                    onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: WelcomeScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ]),
         ),
       ),
       body: Body(),

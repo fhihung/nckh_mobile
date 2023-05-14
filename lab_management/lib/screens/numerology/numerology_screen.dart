@@ -14,6 +14,7 @@ class NumerologyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kSecondaryColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: kSecondaryColor,
