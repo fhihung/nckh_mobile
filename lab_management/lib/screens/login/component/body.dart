@@ -31,17 +31,12 @@ class LoginBody extends StatefulWidget {
 
 class LoginBodyState extends State<LoginBody> {
   static Users? user;
-  static Numerology? number;
+  static Numerology? data;
   bool _isLoading = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   String email = '';
   String pass = '';
-  // Future signIn() async {
-  //   await FirebaseAuth.instance.signInWithEmailAndPassword(
-  //       email: _emailController.text.trim(),
-  //       password: _passwordController.text.trim());
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +97,7 @@ class LoginBodyState extends State<LoginBody> {
                       });
                       // number = await NumerologyService().getData();
                       final firestoreService = FirestoreService();
+
                       try {
                         UserCredential userCredential = await FirebaseAuth
                             .instance
@@ -112,6 +108,7 @@ class LoginBodyState extends State<LoginBody> {
                         // final user = userCredential.user;
                         // Lấy dữ liệu tương ứng với email đăng nhập
                         user = await firestoreService.getData(email);
+                        data = await NumerologyService().postData();
                         // print('${user.year}');
                         Navigator.push(
                           context,
@@ -164,6 +161,7 @@ class LoginBodyState extends State<LoginBody> {
                           );
                         }
                       }
+
                       setState(() {
                         _isLoading = false;
                       });

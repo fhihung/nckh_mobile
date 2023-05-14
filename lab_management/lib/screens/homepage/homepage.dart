@@ -43,19 +43,6 @@ class HomePageScreen extends StatelessWidget {
                 },
               ),
             ),
-            OutlinedButton(
-                onPressed: () async {
-                  final data = await NumerologyService().postData();
-                  // final data = await NumerologyService().getData();
-                  print('he ${data.duongDoi}');
-                },
-                child: Text('Post')),
-            OutlinedButton(
-                onPressed: () async {
-                  final data = await NumerologyService().getData();
-                  print('${data['duong_doi']}');
-                },
-                child: Text('get'))
           ]),
         ),
       ),

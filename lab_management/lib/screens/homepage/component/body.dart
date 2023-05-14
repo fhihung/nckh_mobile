@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lab_management/constant.dart';
+import 'package:lab_management/controller/numerology/if_else.dart';
 import 'package:lab_management/screens/attendance/attendance_screen.dart';
 import 'package:lab_management/screens/homepage/component/home_appbar.dart';
+import 'package:lab_management/screens/login/component/body.dart';
 import 'package:lab_management/widgets/format_dialog.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../../widgets/button_menu.dart';
@@ -56,9 +58,9 @@ class BodyState extends State<Body> {
                 Expanded(
                   flex: 1,
                   child: NgayCaNhan(
-                    detailText: 'Hâm',
+                    detailText: NCNNumber(),
                     text: 'Ngày cá nhân',
-                    numberText: '6',
+                    numberText: LoginBodyState.data!.ngayCaNhan,
                   ),
                 ),
                 Expanded(
@@ -66,7 +68,7 @@ class BodyState extends State<Body> {
                   child: NgayCaNhan(
                     detailText: 'Non',
                     text: 'Tháng cá nhân',
-                    numberText: '9',
+                    numberText: LoginBodyState.data!.thangCaNhan,
                   ),
                 ),
                 Expanded(
@@ -74,7 +76,7 @@ class BodyState extends State<Body> {
                   child: NgayCaNhan(
                     detailText: 'Dở',
                     text: 'Năm cá nhân',
-                    numberText: '8',
+                    numberText: LoginBodyState.data!.namCaNhan,
                   ),
                 )
               ],
