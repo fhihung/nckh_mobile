@@ -1,0 +1,7 @@
+Navigator.push(
+context,
+PageTransition(
+type: PageTransitionType.fade,
+child: AttendanceScreen(),
+),
+)
