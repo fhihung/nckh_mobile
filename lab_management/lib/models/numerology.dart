@@ -23,15 +23,15 @@ class Numerology {
 
   factory Numerology.fromJson(Map<String, dynamic> json) {
     return Numerology(
-      duongDoi: json['duong_doi'],
-      linhHon: json['linh_hon'],
-      namCaNhan: json['nam_ca_nhan'],
-      ngayCaNhan: json['ngay_ca_nhan'],
-      ngaySinh: json['ngay_sinh'],
-      thaiDo: json['thai_do'],
-      thangCaNhan: json['thang_ca_nhan'],
-      tinhCach: json['tinh_cach'],
-      vanMenh: json['van_menh'],
+      duongDoi: json['duong_doi'] ?? 0,
+      linhHon: json['linh_hon'] ?? 0,
+      namCaNhan: json['nam_ca_nhan'] ?? 0,
+      ngayCaNhan: json['ngay_ca_nhan'] ?? 0,
+      ngaySinh: json['ngay_sinh'] ?? 0,
+      thaiDo: json['thai_do'] ?? 0,
+      thangCaNhan: json['thang_ca_nhan'] ?? 0,
+      tinhCach: json['tinh_cach'] ?? 0,
+      vanMenh: json['van_menh'] ?? 0,
     );
   }
 }

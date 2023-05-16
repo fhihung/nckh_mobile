@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Lab Manager',
       debugShowCheckedModeBanner: false,
       theme: TAppTheme.lightTheme,
-      home: LoginScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

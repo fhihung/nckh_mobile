@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../login/login_screen.dart';
 import '/constant.dart';
 import '../../sign_up/sign_up_screen.dart';
-import 'rounded_button.dart';
+import '../../../widgets/rounded_button.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});

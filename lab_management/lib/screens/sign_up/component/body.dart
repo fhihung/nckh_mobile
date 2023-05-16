@@ -15,7 +15,7 @@ import '../../login/component/round_outline_button.dart';
 import '../../login/component/rounded_input_field.dart';
 import '../../login/component/rounded_password_field.dart';
 import '../../login/login_screen.dart';
-import '../../welcome/component/rounded_button.dart';
+import '../../../widgets/rounded_button.dart';
 import '../sign_up_screen.dart';
 
 class Body extends StatefulWidget {

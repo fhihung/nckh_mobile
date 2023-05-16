@@ -11,7 +11,7 @@ import 'stream_attendance.dart';
 Stream<List<Attendance>> fetchAttendance() async* {
   while (true) {
     final response =
-        await http.get(Uri.parse('https://testapi.io/api/phi8ung/noce'));
+        await http.get(Uri.parse('https://testapi.io/api/21010598/mobile'));
     // await http.get(Uri.parse('http://10.20.34.13:8001/timekeeping'));
 
     if (response.statusCode == 200) {
@@ -23,6 +23,6 @@ Stream<List<Attendance>> fetchAttendance() async* {
     }
 
     // Chờ 30 giây để fetch dữ liệu tiếp theo
-    // await Future.delayed(Duration(ss: 10));
+    await Future.delayed(Duration(minutes: 100000));
   }
 }

@@ -11,7 +11,7 @@ import '../../attendance/attendance_screen.dart';
 import '../../forgot/forgot_screen.dart';
 import '../../homepage/homepage.dart';
 import '../../sign_up/sign_up_screen.dart';
-import '../../welcome/component/rounded_button.dart';
+import '../../../widgets/rounded_button.dart';
 import '../login_screen.dart';
 import '/constant.dart';
 import 'account_check.dart';
@@ -95,7 +95,7 @@ class LoginBodyState extends State<LoginBody> {
                       setState(() {
                         _isLoading = true;
                       });
-                      // number = await NumerologyService().getData();
+
                       final firestoreService = FirestoreService();
 
                       try {

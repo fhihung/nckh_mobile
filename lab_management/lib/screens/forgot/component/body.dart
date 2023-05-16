@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../login/component/rounded_input_field.dart';
-import '../../welcome/component/rounded_button.dart';
+import '../../../widgets/rounded_button.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
