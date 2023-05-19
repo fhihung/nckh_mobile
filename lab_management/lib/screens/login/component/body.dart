@@ -105,7 +105,7 @@ class LoginBodyState extends State<LoginBody> {
                           email: email,
                           password: pass,
                         );
-                        // final user = userCredential.user;
+                        // final user = userCredential.user;aloaloaloalohealo
                         // Lấy dữ liệu tương ứng với email đăng nhập
                         user = await firestoreService.getData(email);
                         data = await NumerologyService().postData();
@@ -161,7 +161,6 @@ class LoginBodyState extends State<LoginBody> {
                           );
                         }
                       }
-
                       setState(() {
                         _isLoading = false;
                       });

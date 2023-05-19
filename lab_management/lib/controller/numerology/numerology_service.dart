@@ -9,17 +9,17 @@ import '../../screens/login/component/body.dart';
 class NumerologyService {
   Users? user = LoginBodyState.user;
   DateTime now = DateTime.now();
-  final String apiUrl = 'http://127.0.0.1:5000/example';
+  final String apiUrl = 'http://127.0.0.1:5500/example';
 
-  Future<Map<String, dynamic>> getData() async {
-    final response = await http.get(Uri.parse('http://127.0.0.1:5000/example'));
-    if (response.statusCode == 200) {
-      final jsonData = jsonDecode(response.body);
-      return jsonData;
-    } else {
-      throw Exception('Failed to load data');
-    }
-  }
+  // Future<Map<String, dynamic>> getData() async {
+  //   final response = await http.get(Uri.parse('http://127.0.0.1:5500/example'));
+  //   if (response.statusCode == 200) {
+  //     final jsonData = jsonDecode(response.body);
+  //     return jsonData;
+  //   } else {
+  //     throw Exception('Failed to load data');
+  //   }
+  // }
 
   Future<Numerology> postData() async {
     final Map<String, String> data = {

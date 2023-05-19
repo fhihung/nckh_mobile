@@ -145,15 +145,15 @@ class _BodyState extends State<Body> {
                         );
                         final user = userCredential.user;
                         // Lấy dữ liệu tương ứng với email đăng nhập
-                        await getData(email);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return HomePageScreen();
-                            },
-                          ),
-                        );
+                        // await getData(email);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return HomePageScreen();
+                        //     },
+                        //   ),
+                        // );
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           print('Password week');
@@ -165,11 +165,12 @@ class _BodyState extends State<Body> {
                         _isLoading = false;
                       });
                       _saveData(
-                          email,
-                          name,
-                          _selectedDate!.day.toString(),
-                          _selectedDate!.month.toString(),
-                          _selectedDate!.year.toString());
+                        email,
+                        name,
+                        _selectedDate!.day.toString(),
+                        _selectedDate!.month.toString(),
+                        _selectedDate!.year.toString(),
+                      );
                       ;
                     },
                     text: 'SIGN UP',
@@ -240,24 +241,24 @@ class _BodyState extends State<Body> {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: initialDate,
-      firstDate: DateTime(2021),
+      firstDate: DateTime(1800),
       lastDate: DateTime(2030),
     );
     return picked;
   }
 
-  Future<void> getData(String email) async {
-    final userCollection = FirebaseFirestore.instance.collection('users');
-    final querySnapshot =
-        await userCollection.where('email', isEqualTo: email).get();
+  // Future<void> getData(String email) async {
+  //   final userCollection = FirebaseFirestore.instance.collection('users');
+  //   final querySnapshot =
+  //       await userCollection.where('email', isEqualTo: email).get();
 
-    if (querySnapshot.docs.isNotEmpty) {
-      final userData = querySnapshot.docs.first.data();
-      // Hiển thị dữ liệu lên màn hình
-      print('User data: $userData');
-    } else {
-      // Không tìm thấy dữ liệu
-      print('No data found for email: $email');
-    }
-  }
+  //   if (querySnapshot.docs.isNotEmpty) {
+  //     final userData = querySnapshot.docs.first.data();
+  //     // Hiển thị dữ liệu lên màn hình
+  //     print('User data: $userData');
+  //   } else {
+  //     // Không tìm thấy dữ liệu
+  //     print('No data found for email: $email');
+  //   }
+  // }
 }

@@ -5,6 +5,7 @@ import 'package:lab_management/constant.dart';
 import 'package:lab_management/controller/numerology/if_else.dart';
 import 'package:lab_management/screens/attendance/attendance_screen.dart';
 import 'package:lab_management/screens/homepage/component/home_appbar.dart';
+import 'package:lab_management/screens/library/library_screen.dart';
 import 'package:lab_management/screens/login/component/body.dart';
 import 'package:lab_management/widgets/format_dialog.dart';
 import 'package:page_transition/page_transition.dart';
@@ -34,7 +35,7 @@ class BodyState extends State<Body> {
               Icons.notifications,
               color: kSecondaryColor,
             ),
-            textTitle: 'Hi, Hung!',
+            // textTitle: 'Hi, Hung!',
           ),
           SizedBox(
             height: size.height * 0.02,
@@ -231,7 +232,15 @@ class BodyState extends State<Body> {
                       subTitle: 'Tâm linh',
                     ),
                     ButtonMenu(
-                      taptap: () {},
+                      taptap: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: LibraryScreen(),
+                          ),
+                        );
+                      },
                       // width: 154,
                       icon: Icon(Icons.menu_book),
                       titleText: 'Library',

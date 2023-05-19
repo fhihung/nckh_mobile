@@ -5,12 +5,12 @@ import 'package:lab_management/constant.dart';
 
 class HomeAppBar extends StatelessWidget {
   final VoidCallback? press;
-  final String? textTitle;
+  // final String? textTitle;
   final Icon icon;
   HomeAppBar({
     Key? key,
     this.press,
-    this.textTitle,
+    // this.textTitle,
     required this.icon,
   }) : super(key: key);
   @override
@@ -44,7 +44,7 @@ class HomeAppBar extends StatelessWidget {
                 width: size.width * 0.05,
               ),
               Text(
-                textTitle!,
+                'Welcome',
                 style: TextStyle(
                     color: kSecondaryColor,
                     fontSize: 20,
