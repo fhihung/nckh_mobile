@@ -153,7 +153,7 @@ class ListViewAttendance extends StatelessWidget {
               .toList();
           DateTime startTime = dailyAttendanceList.first.timestamp;
           DateTime endTime = dailyAttendanceList.last.timestamp;
-          Duration workDuration = endTime.difference(startTime);
+          Duration workDuration = startTime.difference(endTime);
 
           // Hiển thị chấm công và thời gian làm việc tương ứng
           return Card(

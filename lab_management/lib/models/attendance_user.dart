@@ -49,7 +49,7 @@ class Attendance {
         .reduce((a, b) => a.isAfter(b) ? a : b);
 
     if (startTime != null && endTime != null) {
-      workDuration = endTime!.difference(startTime!);
+      workDuration = startTime!.difference(endTime!);
     }
   }
 }

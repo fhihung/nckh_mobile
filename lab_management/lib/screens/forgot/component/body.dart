@@ -29,7 +29,12 @@ class Body extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
             child: Text(
-                'No worries, you just need to type your email address or username and we will send the verification code.'),
+              'No worries, you just need to type your email address or username and we will send the verification code.',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500),
+            ),
           ),
           SizedBox(
             height: size.height * 0.02,

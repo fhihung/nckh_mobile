@@ -23,6 +23,6 @@ Stream<List<Attendance>> fetchAttendance() async* {
     }
 
     // Chờ 30 giây để fetch dữ liệu tiếp theo
-    await Future.delayed(Duration(minutes: 100));
+    await Future.delayed(Duration(seconds: 10000));
   }
 }
