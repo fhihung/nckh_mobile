@@ -10,6 +10,7 @@ class NumerologyService {
   Users? user = LoginBodyState.user;
   DateTime now = DateTime.now();
   final String apiUrl = 'http://127.0.0.1:5500/example';
+  // final String apiUrl = 'https://72be-1-55-241-30.ngrok-free.app/example';
 
   // Future<Map<String, dynamic>> getData() async {
   //   final response = await http.get(Uri.parse('http://127.0.0.1:5500/example'));

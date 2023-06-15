@@ -10,6 +10,7 @@ import 'package:lab_management/screens/login/component/body.dart';
 import 'package:lab_management/widgets/format_dialog.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../../widgets/button_menu.dart';
+import '../../library/overview_screen.dart';
 import '../../numerology/numerology_screen.dart';
 import 'ngay_ca_nhan.dart';
 
@@ -237,7 +238,7 @@ class BodyState extends State<Body> {
                           context,
                           PageTransition(
                             type: PageTransitionType.fade,
-                            child: LibraryScreen(),
+                            child: DashBoardScreen(),
                           ),
                         );
                       },
@@ -251,7 +252,7 @@ class BodyState extends State<Body> {
                       // width: 144,
                       icon: Icon(Icons.bookmark_add),
                       titleText: 'Project',
-                      subTitle: 'Updating',
+                      subTitle: 'Coming soon',
                     )
                   ],
                 ),
