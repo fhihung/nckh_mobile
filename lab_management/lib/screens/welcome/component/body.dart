@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Welcome to AIoT Lab',
+            'AIoT Lab',
             style: Theme.of(context).textTheme.headline1,
           ),
           SizedBox(

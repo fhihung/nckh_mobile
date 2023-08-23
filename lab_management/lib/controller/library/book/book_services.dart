@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
 import '../../../models/books.dart';
+
 
 class BookService {
   static const String baseUrl = 'http://localhost:9000/books';
@@ -18,6 +18,21 @@ class BookService {
       throw Exception('Failed to fetch books');
     }
   }
+ 
+static Future<Book> fetchBookById(int id) async {
+  final url = '$baseUrl/$id'; // Thay baseUrl bằng URL của API getBookById của bạn
+ 
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      final book = Book.fromJson(jsonData);
+      return book;
+    } else {
+      throw Exception('Failed to fetch book');
+    }
+  } 
+
+  
 
   static Future<int> fetchTotalBookCount() async {
     final response = await http.get(Uri.parse('$baseUrl/count'));
@@ -40,6 +55,7 @@ class BookService {
       throw Exception('Failed to search books by title');
     }
   }
+
 
   static Future<List<Book>> searchByAuthor(String author) async {
     final response =
@@ -75,28 +91,6 @@ class BookService {
     );
     if (response.statusCode != 201) {
       throw Exception('Failed to add book');
-    } else
-      throw Exception(response.statusCode);
-  }
-
-  static Future<void> updateQuantity(
-    int id,
-    int newQuantity,
-  ) async {
-    final response = await http.put(
-      Uri.parse('$baseUrl/$id/quantity/$newQuantity'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      // body: jsonEncode(<String, dynamic>{
-      //   // 'quantity': newQuantity,
-      // }
-      // ),
-    );
-    if (response.statusCode != 204) {
-      throw Exception('Failed to update quantity');
-    } else if (response.statusCode == 200) {
-      throw Exception('Ok');
     }
   }
 
@@ -107,15 +101,17 @@ class BookService {
     }
   }
 
-  static Future<void> update(
-    int id,
-    int newQuantity,
-  ) async {
+  static Future<Book> updateBook(Book book) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/$id/quantity/$newQuantity'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+      Uri.parse('$baseUrl/update/${book.id}'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(book.toJsonWithoutId()),
     );
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return Book.fromJson(data);
+    } else {
+      throw Exception('Failed to update book');
+    }
   }
 }
