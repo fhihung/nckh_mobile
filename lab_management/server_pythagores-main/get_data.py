@@ -12,7 +12,7 @@ import individual_year
 
 def get_res(user_data):
     dob = str(date_of_birth.solve_DOB(str(user_data["day"])))
-    life_num = life.solve_life(user_data["day"], user_data["month"], user_data["year"])
+    life_num = str(life.solve_life(user_data["day"], user_data["month"], user_data["year"]))
     nod = destiny.solve_destiny(user_data["name"])
     soul_num = soul.solve_soul(user_data["name"])
     personality_num = personality.solve_personality(user_data["name"])
