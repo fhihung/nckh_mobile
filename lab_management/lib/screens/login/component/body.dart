@@ -1,26 +1,24 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lab_management/controller/numerology/numerology_service.dart';
+import 'package:lab_management/screens/homepage/homepage.dart';
+import 'package:lab_management/screens/login/component/rounded_input_field.dart';
+import 'package:lab_management/widgets/rounded_button.dart';
 
-import '../../../controller/authentication/get_data.dart';
 import '../../../models/numerology.dart';
-import '../../../models/users.dart';
-import '../../attendance/attendance_screen.dart';
-import '../../forgot/forgot_screen.dart';
-import '../../homepage/homepage.dart';
-import '../../sign_up/sign_up_screen.dart';
-import '../../../widgets/rounded_button.dart';
-import '../login_screen.dart';
-import '/constant.dart';
-import 'account_check.dart';
-import 'forgot_button.dart';
-import '../../../widgets/format_dialog.dart';
-import 'or_divider.dart';
-import 'round_outline_button.dart';
-import 'rounded_input_field.dart';
-import 'rounded_password_field.dart';
+
+class User {
+  final String name;
+  final String day;
+  final String month;
+  final String year;
+
+  User({
+    required this.name,
+    required this.day,
+    required this.month,
+    required this.year,
+  });
+}
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -30,13 +28,14 @@ class LoginBody extends StatefulWidget {
 }
 
 class LoginBodyState extends State<LoginBody> {
-  static Users? user;
+  static User? user; // Biến để lưu trữ thông tin người dùng
   static Numerology? data;
+  final _nameController = TextEditingController();
+  final _dayController = TextEditingController();
+  final _monthController = TextEditingController();
+  final _yearController = TextEditingController();
+
   bool _isLoading = false;
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  String email = '';
-  String pass = '';
 
   @override
   Widget build(BuildContext context) {
@@ -58,35 +57,55 @@ class LoginBodyState extends State<LoginBody> {
               ),
             ),
             RoundedInputField(
-              controller: _emailController,
-              hintText: 'Email Address',
-              labelText: 'Email Address',
+              controller: _nameController,
+              hintText: 'Full Name',
+              labelText: 'Full Name',
               onChanged: (value) {
-                email = value;
+                // Không cần gán name ở đây
               },
             ),
             SizedBox(
               height: size.height * 0.02,
             ),
-            RoundedPasswordField(
-              controller: _passwordController,
-              textField: 'Password',
-              onChanged: (value) {
-                pass = value;
-              },
-            ),
-            ForgotButton(
-              textBtn: 'Forgot Password?',
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ForgotScreen();
-                    },
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.only(top: 2, right: 20, left: 20),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: RoundedInputField(
+                      controller: _dayController,
+                      hintText: 'Day',
+                      labelText: 'Day',
+                      onChanged: (value) {
+                        // Không cần gán day ở đây
+                      },
+                    ),
                   ),
-                );
-              },
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: RoundedInputField(
+                      controller: _monthController,
+                      hintText: 'Month',
+                      labelText: 'Month',
+                      onChanged: (value) {
+                        // Không cần gán month ở đây
+                      },
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: RoundedInputField(
+                      controller: _yearController,
+                      hintText: 'Year',
+                      labelText: 'Year',
+                      onChanged: (value) {
+                        // Không cần gán year ở đây
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
             _isLoading
                 ? CircularProgressIndicator()
@@ -96,116 +115,54 @@ class LoginBodyState extends State<LoginBody> {
                         _isLoading = true;
                       });
 
-                      final firestoreService = FirestoreService();
+                      // Lấy dữ liệu từ các trường nhập liệu
+                      String name = _nameController.text;
+                      String day = _dayController.text;
+                      String month = _monthController.text;
+                      String year = _yearController.text;
 
-                      try {
-                        UserCredential userCredential = await FirebaseAuth
-                            .instance
-                            .signInWithEmailAndPassword(
-                          email: email,
-                          password: pass,
-                        );
-                        // final user = userCredential.user;aloaloaloalohealo
-                        // Lấy dữ liệu tương ứng với email đăng nhập
-                        user = await firestoreService.getData(email);
-                        data = await NumerologyService().postData();
-                        // print('${user.year}');
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return HomePageScreen();
-                            },
-                          ),
-                        );
-                      } on FirebaseAuthException catch (e) {
-                        if (e.code == "user-not-found") {
-                          // Show error dialog
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return FormatDialog(
-                                styleText: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
-                                styleSubText: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400),
-                                text: "Login failed",
-                                subtext:
-                                    "User not found. Please check your email and try again.",
-                              );
-                            },
-                          );
-                        } else if (e.code == "wrong-password") {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return FormatDialog(
-                                styleText: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                styleSubText: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400),
-                                text: "Login failed",
-                                subtext:
-                                    "Wrong email or password. Please try again.",
-                              );
-                            },
-                          );
-                        }
-                      }
+                      // Tạo đối tượng User
+                      user = User(
+                        name: name,
+                        day: day,
+                        month: month,
+                        year: year,
+                      );
+
+                      // Gọi hàm xử lý đăng nhập
+                      await _handleLogin();
+                      // ignore: use_build_context_synchronously
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return HomePageScreen();
+                          },
+                        ),
+                      );
                       setState(() {
                         _isLoading = false;
                       });
                     },
                     text: 'LOG IN',
                   ),
-            AccountCheck(
-              text: 'Don\'t have an account?',
-              textBtn: ' Sign up',
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            OrDivider(),
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-            RoundedOutlineButton(
-              textBtn: 'Sign in with Google',
-              press: () {},
-              icon: 'assets/icons/google.png',
-              margin: size.width * 0.14,
-            ),
-            RoundedOutlineButton(
-              textBtn: 'Sign in with Apple',
-              press: () {},
-              icon: 'assets/icons/apple-logo.png',
-              margin: size.width * 0.15,
-            ),
-            RoundedOutlineButton(
-              textBtn: 'Sign in with Facebook',
-              press: () {},
-              icon: 'assets/icons/facebook.png',
-              margin: size.width * 0.11,
-            ),
+
+            // Rest của mã
           ],
         ),
       ),
     );
+  }
+
+  // Hàm xử lý đăng nhập
+  Future<void> _handleLogin() async {
+    data = await NumerologyService().postData();
+    // Sử dụng biến user để truyền dữ liệu người dùng
+
+    // Ví dụ: In thông tin người dùng ra console
+    if (user != null) {
+      print('Logged in as ${user!.name}');
+      print('Date of Birth: ${user!.day}/${user!.month}/${user!.year}');
+    }
   }
 }

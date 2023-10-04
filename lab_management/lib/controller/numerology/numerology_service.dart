@@ -7,10 +7,10 @@ import '../../models/users.dart';
 import '../../screens/login/component/body.dart';
 
 class NumerologyService {
-  Users? user = LoginBodyState.user;
+  User? user = LoginBodyState.user;
   DateTime now = DateTime.now();
   // final String apiUrl = 'http://127.0.0.1:5500/example';
-  final String apiUrl = 'https://1729-183-80-51-51.ngrok-free.app/example';
+  final String apiUrl = 'https://numerology.loca.lt/example';
 
   // Future<Map<String, dynamic>> getData() async {
   //   final response = await http.get(Uri.parse('http://127.0.0.1:5500/example'));
@@ -24,10 +24,10 @@ class NumerologyService {
 
   Future<Numerology> postData() async {
     final Map<String, String> data = {
-      "name": user!.name!,
-      "day": user!.day!,
-      "month": user!.month!,
-      "year": user!.year!,
+      "name": user!.name,
+      "day": user!.day,
+      "month": user!.month,
+      "year": user!.year,
       "current_day": DateFormat.d().format(now),
       "current_month": DateFormat.M().format(now),
       "current_year": DateFormat.y().format(now)

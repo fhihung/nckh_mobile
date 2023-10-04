@@ -5,12 +5,10 @@ import 'package:lab_management/constant.dart';
 import 'package:lab_management/controller/numerology/if_else.dart';
 import 'package:lab_management/screens/attendance/attendance_screen.dart';
 import 'package:lab_management/screens/homepage/component/home_appbar.dart';
-import 'package:lab_management/screens/library/library_screen.dart';
 import 'package:lab_management/screens/login/component/body.dart';
 import 'package:lab_management/widgets/format_dialog.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../../widgets/button_menu.dart';
-import '../../library/overview_screen.dart';
 import '../../library/search_book_screen.dart';
 import '../../numerology/numerology_screen.dart';
 import 'ngay_ca_nhan.dart';
@@ -233,21 +231,21 @@ class BodyState extends State<Body> {
                       titleText: 'Numerology',
                       subTitle: 'Tâm linh',
                     ),
-                    ButtonMenu(
-                      taptap: () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.fade,
-                            child: SearchBookScreen(),
-                          ),
-                        );
-                      },
-                      // width: 154,
-                      icon: Icon(Icons.menu_book),
-                      titleText: 'Library',
-                      subTitle: 'Tri thức',
-                    ),
+                    // ButtonMenu(
+                    //   taptap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       PageTransition(
+                    //         type: PageTransitionType.fade,
+                    //         child: SearchBookScreen(),
+                    //       ),
+                    //     );
+                    //   },
+                    //   // width: 154,
+                    //   icon: Icon(Icons.menu_book),
+                    //   titleText: 'Library',
+                    //   subTitle: 'Tri thức',
+                    // ),
                     ButtonMenu(
                       taptap: () {},
                       // width: 144,

@@ -11,8 +11,6 @@ import 'screens/sign_up/textform.dart';
 import 'screens/welcome/welcome_screen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 // void main() {

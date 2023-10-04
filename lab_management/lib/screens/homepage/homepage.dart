@@ -1,8 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lab_management/controller/numerology/numerology_service.dart';
 
-import 'package:page_transition/page_transition.dart';
 import '../../constant.dart';
 import '../../models/numerology.dart';
 import '../../models/users.dart';
@@ -14,7 +11,7 @@ import 'component/home_appbar.dart';
 class HomePageScreen extends StatelessWidget {
   static Numerology? number;
 
-  Users? user = LoginBodyState.user;
+  User? user = LoginBodyState.user;
   HomePageScreen({super.key});
 
   @override
@@ -58,22 +55,21 @@ class HomePageScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                  child: ElevatedButton(
-                    child: Text('Exit'),
-                    onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          child: WelcomeScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                //   child: ElevatedButton(
+                //     child: Text('Exit'),
+                //     onPressed: () async {
+                //       Navigator.push(
+                //         context,
+                //         PageTransition(
+                //           type: PageTransitionType.fade,
+                //           child: WelcomeScreen(),
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
               ]),
         ),
       ),

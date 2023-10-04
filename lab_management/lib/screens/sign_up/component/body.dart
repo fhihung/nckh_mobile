@@ -86,31 +86,31 @@ class _BodyState extends State<Body> {
             SizedBox(
               height: size.height * 0.02,
             ),
-            RoundedInputField(
-              hintText: 'Email Address',
-              controller: _emailController,
-              onChanged: (value) {
-                email = value;
-              },
-            ),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
-            RoundedPasswordField(
-              controller: _passwordController,
-              textField: 'Password',
-              onChanged: (value) {
-                pass = value;
-              },
-            ),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
-            RoundedPasswordField(
-              controller: _passwordConfirmController,
-              textField: 'Confirm Password',
-              onChanged: (value) {},
-            ),
+            // RoundedInputField(
+            //   hintText: 'Email Address',
+            //   controller: _emailController,
+            //   onChanged: (value) {
+            //     email = value;
+            //   },
+            // ),
+            // SizedBox(
+            //   height: size.height * 0.02,
+            // ),
+            // RoundedPasswordField(
+            //   controller: _passwordController,
+            //   textField: 'Password',
+            //   onChanged: (value) {
+            //     pass = value;
+            //   },
+            // ),
+            // SizedBox(
+            //   height: size.height * 0.02,
+            // ),
+            // RoundedPasswordField(
+            //   controller: _passwordConfirmController,
+            //   textField: 'Confirm Password',
+            //   onChanged: (value) {},
+            // ),
             SizedBox(
               height: size.height * 0.03,
             ),
